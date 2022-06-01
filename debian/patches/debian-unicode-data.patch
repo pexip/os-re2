@@ -1,0 +1,25 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Sat, 4 Jul 2015 13:12:36 -0700
+Subject: Use Debian's Unicode data
+
+The Unicode data on the local system should be used, rather than
+downloading from unicode.org.
+
+Forwarded: not-needed
+---
+ re2/unicode.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/re2/unicode.py b/re2/unicode.py
+index 727bea5..651b7cc 100644
+--- a/re2/unicode.py
++++ b/re2/unicode.py
+@@ -13,7 +13,7 @@ import re
+ from six.moves import urllib
+ 
+ # Directory or URL where Unicode tables reside.
+-_UNICODE_DIR = "https://www.unicode.org/Public/14.0.0/ucd"
++_UNICODE_DIR = "/usr/share/unicode"
+ 
+ # Largest valid Unicode code value.
+ _RUNE_MAX = 0x10FFFF

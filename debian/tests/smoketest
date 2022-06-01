@@ -1,0 +1,10 @@
+#!/bin/sh
+set -efu
+
+cp testinstall.cc "$AUTOPKGTEST_TMP"
+
+cd "$AUTOPKGTEST_TMP"
+
+g++ --std=c++11 -Wall -o testinstall testinstall.cc -lre2
+
+./testinstall

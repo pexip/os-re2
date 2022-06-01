@@ -1,0 +1,559 @@
+re2 (20220601+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 01 Jun 2022 19:59:28 +0100
+
+re2 (20220401+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 01 Apr 2022 21:30:19 -0400
+
+re2 (20220201+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    - No longer declaring -std=c++11 in the .pc file. (Closes: #1003482)
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 02 Feb 2022 11:52:37 -0400
+
+re2 (20211101+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Drop patch python3, superseded upstream.
+  * Bump Standards-Version to 4.6.0, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 01 Nov 2021 18:05:34 -0700
+
+re2 (20210901+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 01 Sep 2021 16:41:17 -0700
+
+re2 (20210801+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 15 Aug 2021 22:25:59 -0400
+
+re2 (20210801+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 04 Aug 2021 15:46:22 -0400
+
+re2 (20210601+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 02 Jun 2021 16:56:50 -0400
+
+re2 (20210401+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop soname-9.patch, superseded upstream.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 17 May 2021 10:31:53 -0400
+
+re2 (20210201+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump watch file version to 4.
+  * Bump Standards-Version to 4.5.1, no changes needed.
+  * Drop source-contains-svn-conflict-file lintian override, no longer needed.
+  * Revert SONAME back to 9, the bump to 10 was unnecessary.
+  * Bump debhelper compat level to 13, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 01 Feb 2021 17:28:37 -0700
+
+re2 (20201101+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 01 Dec 2020 12:13:08 -0800
+
+re2 (20201101+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+    - Upload to experimental, for the transition.
+  * Update upstream metadata.
+  * Bump SONAME to libre2-9. RE2::Arg uses templates instead of macros.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 01 Nov 2020 22:45:11 -0800
+
+re2 (20201001+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 02 Oct 2020 11:36:19 -0700
+
+re2 (20200801+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add new && constructor symbols that GCC 10 generates.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 01 Aug 2020 20:48:22 -0700
+
+re2 (20200706+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 18 Jul 2020 17:20:44 -0700
+
+re2 (20200706+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+    - Upload to experimental, for the transition.
+  * Bump SONAME to libre2-8, due to an enum renumbering.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 08 Jul 2020 11:11:33 -0700
+
+re2 (20200601+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Drop patch 32bit-test-memory.patch, superseded upstream.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 04 Jun 2020 09:18:24 -0700
+
+re2 (20200501+dfsg-3) unstable; urgency=medium
+
+  * Cherry-pick patch to fix FTBFS on 32bit archs. (Closes: #961236)
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 21 May 2020 13:25:13 -0700
+
+re2 (20200501+dfsg-2) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * Upload to unstable.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 21 May 2020 11:35:34 -0700
+
+re2 (20200501+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+    - Upload to experimental, for the transition.
+  * Bump SONAME to 7, due to a switch to std::vector in histogram functions.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 04 May 2020 15:23:59 -0700
+
+re2 (20200401+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 01 Apr 2020 22:56:44 -0700
+
+re2 (20200303+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 27 Mar 2020 07:50:14 -0700
+
+re2 (20200303+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Bump SONAME to 6, following an upstream bump.
+    - Drop soname.patch, upstream is now attempting ABI stability.
+    - Upload to experimental for the transition.
+  * Update copyright.
+  * Bump Standards-Version to 4.5.0, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 02 Mar 2020 21:14:18 -0800
+
+re2 (20200101+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 02 Jan 2020 14:18:11 +0200
+
+re2 (20191201+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 24 Dec 2019 09:05:45 +0200
+
+re2 (20191101+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 4.4.1, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 02 Nov 2019 11:27:26 -0700
+
+re2 (20190901+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 02 Sep 2019 17:58:17 -0300
+
+re2 (20190801+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Bump Standards-Version to 4.4.0, no changes needed.
+  * Bump debhelper compat to 11, and use B-D syntax.
+  * Add Build-Dep on python3-six, for building unicode tables.
+  * Patch: Build unicode tables with python3.
+  * Tidy up patch names.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 08 Aug 2019 13:16:01 -0300
+
+re2 (20190101+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 07 Jan 2019 19:16:34 +0200
+
+re2 (20190101+dfsg-1) experimental; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream release.
+  * Update symbols.
+  * Bump soname - a symbol was removed.
+    - Upload to experimental for the transition.
+  * Bump Standards-Version to 4.3.0, no changes needed.
+  * Mark libre2-dev Multi-Arch: same.
+  * Declare Build-Depends-Package in the symbols file.
+
+  [ Ondřej Nový ]
+  * d/tests: Use AUTOPKGTEST_TMP instead of ADTTMP
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 02 Jan 2019 08:44:36 +0000
+
+re2 (20180901+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Bump Standards-Version to 4.2.1, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 06 Sep 2018 17:26:27 +0300
+
+re2 (20180701+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Bump Standards-Version to 4.1.5, no changes needed.
+  * Add a new symbol.
+  * Add risc64 to the long_size_t symbols, thanks Manuel A. Fernandez
+    Montecelo (Closes: #897256)
+  * Ship the .pc file, thanks Emanuele Rocca. (Closes: #900638)
+  * Remove --ddeb-migration, no longer needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 23 Jul 2018 19:27:36 +0800
+
+re2 (20180301+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 03 Mar 2018 12:42:20 -0800
+
+re2 (20180201+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 23 Feb 2018 10:44:39 +0100
+
+re2 (20180201+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Update copyright.
+  * Bump debhelper compat level to 11.
+    - Should now pass dpkg-builflags, itself.
+    - Uses --parallel by default.
+  * Bump Standards-Version to 4.1.3, no changes needed.
+  * Migrate VCS hosting to salsa.debian.org.
+  * Bump soname - a symbol was removed.
+    - Upload to experimental for the transition.
+  * Declare Rules-Requires-Root: no.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 22 Feb 2018 10:56:48 +0100
+
+re2 (20170101+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 09 Jan 2017 07:43:51 +1100
+
+re2 (20161101+dfsg-2) unstable; urgency=medium
+
+  * Missed a 32-bit symbol change (an int -> size_t).
+  * Drop valgrind Build-Dep, upstream now uses MSan.
+  * Upstream changed their hash function, drop mention of hash.cc in
+    copyright.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 10 Nov 2016 23:59:43 +0000
+
+re2 (20161101+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+  * Another upstream ABI break, which we can roll into our -3 ABI.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 10 Nov 2016 19:02:52 +0000
+
+re2 (20160801+dfsg-1) experimental; urgency=medium
+
+  * Upload to experimental.
+  * New upstream release.
+  * SONAME bump, upstream removed some symbols.
+  * Avoid GCC 6 regression in flexible array members.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 04 Aug 2016 13:17:10 -0700
+
+re2 (20160501+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.8, no changes needed.
+  * Use upstream's testinstall.cc in the smoketest.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 07 May 2016 21:51:14 +0200
+
+re2 (20160401+dfsg-2) unstable; urgency=medium
+
+  * Bump soname to libre2.so.2. 20160401 changed the ABI of the RE2 class.
+    (Closes: #820178).
+  * Use --std=c++11 in the smoketest, too. Consumers of libre2 now need to do
+    this.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 07 Apr 2016 17:37:27 -0700
+
+re2 (20160401+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Compress repacked tarball with xz.
+  * Update copyright.
+  * Compile with --std=c++11, for native C++ atomics.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 04 Apr 2016 19:56:46 -0700
+
+re2 (20160201+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Drop atomic-ops patch, __atomic builtins are used.
+  * Bump Standards-Version to 3.9.7, no changes needed.
+  * Switch Vcs fields to https.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 06 Feb 2016 18:24:16 +1100
+
+re2 (20151101+dfsg-2) unstable; urgency=medium
+
+  * Simplify shared library tests, to avoid an FTBFS on MIPS.
+  * Drop -dbg package now that we have automatic dbgsym packages.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 01 Jan 2016 14:06:28 +0200
+
+re2 (20151101+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Dropped perl 5.18 patch, superseded upstream.
+  * Update copyright years.
+  * Add new symbols.
+  * valgrind is now available on arm64 and ppc64el, B-D on it.
+  * Update homepage to point at github.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 26 Dec 2015 23:56:14 +0200
+
+re2 (20150701+dfsg-2) unstable; urgency=medium
+
+  * Build against g++ 5.
+  * Update symbols for C++11 ABI.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 12 Aug 2015 21:56:50 +0200
+
+re2 (20150701+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Drop patch exporting flag symbol, superseded upstream.
+  * Migrate packaging to git.
+  * debian/watch:
+    - Use repacksuffix, now that it exists.
+    - Point at github, google code has been retired.
+  * Add new symbols.
+  * Bump Standards-Version to 3.9.6, no changes needed.
+  * Drop XS-Testsuite control field, now unnecessary.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 04 Jul 2015 16:46:45 -0700
+
+re2 (20140304+dfsg-2) unstable; urgency=medium
+
+  * Add a smoketest autopkgtest.
+  * Add DEP12 upstream metadata.
+  * Remove x32 valgrind B-D again, it isn't successfully building there, yet.
+  * Add Build-Using field specifying unicode-data, as we generate tables in
+    the source, from it. (Closes: #751865)
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 20 Jun 2014 01:07:06 +0200
+
+re2 (20140304+dfsg-1) unstable; urgency=medium
+
+  * New upstream revision.
+  * Refresh patches.
+  * Upload to unstable. And this time, we're here to stay. (Closes: #731536)
+  * Replace repack rules with uscan's new Files-Excluded feature.
+  * perl-5.18.diff: Reverse approach, after consultation with upstream.
+    Don't consider vertical tabs to be matched by \s.
+  * Canonicalize VCS URL.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 03 Jun 2014 00:01:15 +0200
+
+re2 (20140111+dfsg-1) experimental; urgency=low
+
+  * New upstream version (Closes: #728090).
+    - Upstream now provides date-based releases, switch to them.
+    - Refresh patches.
+  * Bump Standards-Version to 3.9.5.
+  * Add -Wall to CXXFLAGS
+  * Use valgrind headers on mips.
+  * Drop Jakub from Uploaders, at his request.
+  * perl-5.18.diff: The vertical tab \cK (0x0b) is matched by \s. Update
+    test_parse to be aware of this. (Closes: #731461)
+  * FLAGS_filtered_re2_min_atom_len.diff: Export a flag symbol, fixing a unit
+    test failure.
+  * Build a shared library again. (Closes: #731475)
+    - This time, multi-arch:
+      + Build-Depends on dpkg-dev (>= 1.16~).
+  * Bump debhelper compat level to 9. This adds a bunch of useful features for
+    shared libraries, and sets build flags.
+  * Drop AUTHORS and CONTRIBUTORS from docs, and instead list them in
+    debian/copyright.
+  * Lintian override:
+    copyright-should-refer-to-common-license-file-for-apache-2
+  * Canonicalize VCS URLs.
+  * Update valgrind build-dep archs: Remove armel, and add mipsel, mips64,
+    mips64el, and x32.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 16 Jan 2014 23:34:30 +0200
+
+re2 (0+hg80+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+  * Bump Standards-Version to 3.9.3, no changes needed.
+  * Update machine-readable copyright Format to 1.0.
+  * Use valgrind headers on s390x and ppc64.
+  * Rename get-orig-source to get-packaged-orig-source, as we use the revision
+    in the most recent changelog entry, not upstream's tip.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 28 May 2012 01:48:06 +0100
+
+re2 (0+hg74+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+  * Drop ia64-page-size.diff, accepted upstream.
+  * Pass CPPFLAGS too.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 13 Nov 2011 01:28:52 +0200
+
+re2 (0+hg68+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+  * Explicitly pass CXXFLAGS and LDFLAGS to dh_auto_build and dh_auto_test,
+    now that dpkg-buildpackage doesn't export anything any more.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 26 Sep 2011 00:59:05 +0200
+
+re2 (0+hg63+dfsg-2) experimental; urgency=low
+
+  * ia64-page-size.diff: Use multiples of 16k in re2_test.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 26 Jul 2011 17:01:30 +0200
+
+re2 (0+hg63+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+    - Drop include-cstddef.diff. Superseded upstream.
+  * Use valgrind's header on armel and armhf too (now that it's supported
+    there).
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 25 Jul 2011 14:19:17 +0200
+
+re2 (0+hg57+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+  * include-cstddef.diff: Include cstddef for compatibility with gcc 4.6.
+    (LP: #770898)
+  * Correct DEP3 headers (first line of Description is the subject)
+  * Bump Standards-Version to 3.9.2 (no changes needed).
+  * Bump copyright to latest DEP5 revision.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 29 Apr 2011 20:55:33 +0200
+
+re2 (0+hg56+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+  * Update my email address.
+  * Upstream has clarified their intention to not have stable releases:
+    - Comment out watch file
+    - Add README.Debian
+  * Update copyright to latest DEP5 revision. Bump years.
+  * Bump debhelper BD and compat to 8.
+    - No need to check for dh --parallel support any more.
+  * Use dpkg-buildflags for CXXFLAGS. Add versioned dpkg-dev BD.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 02 Feb 2011 18:09:28 +0200
+
+re2 (0+hg40+dfsg-2) experimental; urgency=low
+
+  * Add missing Breaks and Replaces on libre2-0. (LP: #653873)
+  * Fix debian/rules to allow cleaning when clean.
+
+ -- Stefano Rivera <stefano@rivera.za.net>  Sun, 03 Oct 2010 13:39:04 +0200
+
+re2 (0+hg40+dfsg-1) experimental; urgency=low
+
+  * New upstream revision.
+  * Upload to experimental, upstream has not committed to a stable ABI yet.
+  * Drop shared library until we have a stable ABI.
+  * Retire Patches:
+    - destdir: Upstream Makefile now uses DESTDIR.
+  * Build with Debian's valgrind header rather than embedded copy. On
+    architectures where it isn't available, use an empty header instead.
+  * Bump Standards-Version to 3.9.1 (no changes needed).
+
+ -- Stefano Rivera <stefano@rivera.za.net>  Sat, 25 Sep 2010 18:18:29 +0200
+
+re2 (0+hg23+dfsg-1) unstable; urgency=low
+
+  * Upload to unstable.
+  * New upstream revision.
+  * Retired Patches:
+    - shared-library: Upstream merged shared library building patch.
+      Upstream now maintains exported symbol list and soname.
+    - big-endian-arg-test: Improved patch merged upstream, fixing tests
+      on big endian architectures.
+    - pthread: Upstream merged patch to use -pthread.
+    - re-generate-source: Patch merged, but table generation is optional.
+      We now build with REBUILD_TABLES=1
+    - noopt: We now pass CXXFLAGS from debian/rules.
+    - write-barrier: Upstream merged patch to add read memory barriers.
+  * New Patches:
+    - local-unicodedata: Originally part of re-generate-source.
+  * Correct symbols list for s390 and avr32, which have size_t as an alias for
+    unsigned long.
+  * Dropped 0d.0.0 soname in favour of upstream's 0.0.0.
+  * Added workaround to disable --parallel when using an old debhelper.
+
+ -- Stefano Rivera <stefano@rivera.za.net>  Sat, 01 May 2010 12:10:13 +0200
+
+re2 (0+hg16+dfsg-1) experimental; urgency=low
+
+  [ Stefano Rivera ]
+  * Initial release. (Closes: #574276)
+
+  [ Jakub Wilk ]
+  * Add myself to uploaders.
+
+ -- Stefano Rivera <stefano@rivera.za.net>  Sat, 10 Apr 2010 23:17:54 +0200

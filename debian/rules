@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+export DEB_CXXFLAGS_MAINT_APPEND=-pthread -Wall -std=c++11
+export DEB_LDFLAGS_MAINT_APPEND=-pthread
+export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS | sed s/-O2/-O3/)
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+LIB_PKG = libre2-9
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- REBUILD_TABLES=1
+
+override_dh_auto_install:
+	dh_auto_install -- prefix=/usr libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_installdocs:
+	dh_installdocs --link-doc=$(LIB_PKG)
+
+override_dh_gencontrol:
+	dh_gencontrol -- -VBuilt-Using='$(shell dpkg-query -f'$${source:Package} (= $${source:Version})' -W unicode-data)'

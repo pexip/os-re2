@@ -1,0 +1,5 @@
+version=4
+
+opts=dversionmangle=s/\+dfsg$//,repacksuffix=+dfsg,uversionmangle=s/-//g,compression=xz \
+https://github.com/google/re2/releases \
+.*[^n]/(?:|v|version-|version|release-|r|REL_|rel-|re2(?:_|-))(\d[^\s/]*)\.(?:tar\.xz|txz|tar\.bz2|tbz2|tar\.gz|tgz)

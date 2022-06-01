@@ -1,0 +1,34 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Sat, 4 Jul 2015 13:12:35 -0700
+Subject: Parallel-friendly test-runner
+
+Use our own test runner that can test in parallel with readable output
+and errors included in the build log.
+
+Output a . after each line of test output so slow buildds don't give up on us.
+Only perform cursory tests on the static library.
+
+Forwarded: not-needed
+---
+ Makefile | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 197c2b3..fde23c5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -261,7 +261,13 @@ clean:
+ testofiles: $(TESTOFILES)
+ 
+ .PHONY: test
+-test: $(DTESTS) $(TESTS) $(STESTS) debug-test static-test shared-test
++test: $(patsubst %,%.log,$(TESTS) $(STESTS) $(SBIGTESTS))
++
++obj/so/test/%.log: obj/so/test/%
++	@LD_LIBRARY_PATH=obj/so:$(LD_LIBRARY_PATH) sh debian/runtest.sh $<
++
++obj/test/%.log: obj/test/%
++	@sh debian/runtest.sh $<
+ 
+ .PHONY: debug-test
+ debug-test: $(DTESTS)
