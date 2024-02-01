@@ -1,3 +1,9 @@
+re2 (20220601+dfsg-1+pexip24u5) pexip-bookworm; urgency=medium
+
+  * New versioning scheme
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 01 Feb 2024 16:28:11 +0000
+
 re2 (20220601+dfsg-1pexip4) pexip-bookworm; urgency=medium
 
   * Bookworm build for product distribution
