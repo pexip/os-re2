@@ -1,20 +1,40 @@
 #!/usr/bin/make -f
 
-export DEB_CXXFLAGS_MAINT_APPEND=-pthread -Wall -std=c++11
+export DEB_CXXFLAGS_MAINT_APPEND=-pthread -Wall -std=c++14
 export DEB_LDFLAGS_MAINT_APPEND=-pthread
 export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS | sed s/-O2/-O3/)
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
-LIB_PKG = libre2-9
+LIB_PKG = libre2-11
+ABI_PKG = $(LIB_PKG)-absl$(shell pkgconf --modversion absl_base)
 
 %:
-	dh $@
+	dh $@ --with python3
+
+execute_after_dh_auto_clean:
+	dh_auto_clean --sourcedir=python --buildsystem pybuild
+
+execute_after_dh_auto_configure:
+	dh_auto_configure --sourcedir=python --buildsystem pybuild
 
 override_dh_auto_build:
+	rm -f re2/perl_groups.cc re2/unicode_casefold.cc re2/unicode_groups.cc
 	dh_auto_build -- REBUILD_TABLES=1
+	dh_auto_build --sourcedir=python --buildsystem pybuild
 
 override_dh_auto_install:
 	dh_auto_install -- prefix=/usr libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+	dh_auto_install --sourcedir=python --buildsystem pybuild
+
+execute_after_dh_auto_test:
+	dh_auto_test --sourcedir=python --buildsystem pybuild -- \
+	             --test-custom \
+	             --test-args="cd {build_dir} && cp {dir}/re2_test.py . && LD_LIBRARY_PATH=$(CURDIR)/obj/so {interpreter} re2_test.py; rm -f re2_test.py"
+
+override_dh_makeshlibs:
+	echo "re2:Provides=$(ABI_PKG)" >> debian/$(LIB_PKG).substvars
+	dh_makeshlibs -p$(LIB_PKG) -V "$(ABI_PKG)"
+	dh_makeshlibs --remaining-packages
 
 override_dh_installdocs:
 	dh_installdocs --link-doc=$(LIB_PKG)

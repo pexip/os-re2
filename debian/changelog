@@ -1,3 +1,172 @@
+re2 (20240702-3) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Build-Depend on python3-setuptools.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 09 Mar 2025 16:02:29 -0400
+
+re2 (20240702-2) experimental; urgency=medium
+
+  * Build the python bindings. (Closes: #1094745)
+    - Patch: Build the Python bindings without bazel.
+    - Patch: Ignore existing re2 directory in Python build dir.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 30 Jan 2025 18:53:04 -0400
+
+re2 (20240702-1) experimental; urgency=medium
+
+  * New upstream release.
+    - Upload to experimental, as it requires a newer abseil.
+  * Merge unstable changelog history predating libre2-11.
+  * Bump abseil version requirement, following upstream.
+  * Use pkgconf in the smoketest autopkgtest.
+  * Bump Standards-Version to 4.7.0, no changes needed.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 30 Jan 2025 11:30:04 -0400
+
+re2 (20240501-3) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 23 May 2024 10:16:23 -0400
+
+re2 (20240501-2) experimental; urgency=medium
+
+  * Bind our Debian package ABI to absl (as discussed in #1070659):
+    - Include absl ABI in an ABI virtual package name provided by libre2-11.
+    - Have dependencies Depend on this ABI virtual package via dpkg-shlibdeps.
+    - Drop symbols files. Upstream is doing a reasonable job of ABI
+      maintenance, these days, and static symbols files are incompatible with
+      binNMU absl ABI transitions.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 07 May 2024 19:06:41 -0400
+
+re2 (20240501-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 03 May 2024 17:10:51 -0400
+
+re2 (20240401-1) experimental; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream release.
+  * Update symbols for absl20230802. (libre2-11 hasn't hit unstable yet.)
+  * Bump smoketest to --std=c++14.
+
+  [ Alexandre Detiste ]
+  * remove extraneous python3-six build-dep
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 01 Apr 2024 13:19:43 -0400
+
+re2 (20240301-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 04 Mar 2024 11:14:32 -0400
+
+re2 (20240201-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Add hurd-amd64 to the long_size_t archs in symbols.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 01 Feb 2024 09:10:48 -0400
+
+re2 (20231101-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Add loong64 to the long_size_t archs in symbols. (Closes: #1054467)
+  * Remove re2/fuzzing/compiler-rt from copyright, dropped upstream.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 01 Nov 2023 11:45:56 +0200
+
+re2 (20230901-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 22 Sep 2023 22:42:58 +0530
+
+re2 (20230801-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 10 Aug 2023 00:11:43 +0300
+
+re2 (20230701-1) experimental; urgency=medium
+
+  * New upstream released.
+  * Drop patch linker-order.patch, superseded upstream.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 18 Jul 2023 18:08:25 +0200
+
+re2 (20230602-2) experimental; urgency=medium
+
+  * Correct 32bit symbols.
+  * Explicitly request C++14 support from the compiler.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 16 Jun 2023 14:09:58 -0400
+
+re2 (20230602-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Build-Depend on libabsl-dev, libbenchmark-dev, libgtest-dev, pkgconf, and
+    python3-absl, now required upstream.
+  * Depend on libabsl-dev, in libre2-dev (filtered_re2.h depends on it)
+  * Bump SONAME to libre2-11, following upstream.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 14 Jun 2023 13:19:34 -0400
+
+re2 (20230301-3) unstable; urgency=medium
+
+  * Add loong64 to the long_size_t archs in symbols. (Closes: #1054467)
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 01 Nov 2023 13:01:25 +0200
+
+re2 (20230301-2) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Clean correctly.
+  * Patch: Specify shared libraries at the end of the linker command line.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 13 Jun 2023 22:38:17 -0400
+
+re2 (20230301-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 4.6.2, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 03 Mar 2023 09:10:12 -0400
+
+re2 (20230201-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop the +dfsg repack, upstream has removed the XKCD cartoon.
+  * Refresh patches.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 05 Feb 2023 19:12:44 -0400
+
+re2 (20221201+dfsg-1) experimental; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream release.
+  * Refresh patches.
+  * Switch watch file to GitHub tags, as the releases page layout has changed.
+  * Bump SONAME to libre2-10, following upstream.
+  * Update symbols.
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + Build-Depends: Drop versioned constraint on dpkg-dev and g++.
+    + libre2-9: Drop versioned constraint on libre2-dev in Replaces.
+    + libre2-9: Drop versioned constraint on libre2-dev in Breaks.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 09 Jan 2023 17:50:33 -0400
+
 re2 (20220601+dfsg-1) unstable; urgency=medium
 
   * New upstream release.
