@@ -51,7 +51,7 @@ x{n}+	exactly «n» «x», possessive NOT SUPPORTED
 Grouping:
 (re)	numbered capturing group (submatch)
 (?P<name>re)	named & numbered capturing group (submatch)
-(?<name>re)	named & numbered capturing group (submatch) NOT SUPPORTED
+(?<name>re)	named & numbered capturing group (submatch)
 (?'name're)	named & numbered capturing group (submatch) NOT SUPPORTED
 (?:re)	non-capturing group
 (?flags)	set flags within current group; non-capturing
@@ -292,6 +292,7 @@ Javanese
 Kaithi
 Kannada
 Katakana
+Kawi
 Kayah_Li
 Kharoshthi
 Khitan_Small_Script
@@ -326,6 +327,7 @@ Mro
 Multani
 Myanmar
 Nabataean
+Nag_Mundari
 Nandinagari
 New_Tai_Lue
 Newa
