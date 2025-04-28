@@ -1,0 +1,48 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Thu, 30 Jan 2025 15:18:42 -0400
+Subject: Build Python module without Bazel
+
+We don't have a useable modern Bazel in Debian. Just use PyBind11's
+native setuptools support instead.
+
+Forwarded: not-needed
+---
+ python/setup.py | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index a67509b..38b89bd 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -8,6 +8,8 @@ import setuptools
+ import setuptools.command.build_ext
+ import shutil
+ 
++from pybind11.setup_helpers import Pybind11Extension
++
+ long_description = r"""A drop-in replacement for the re module.
+ 
+ It uses RE2 under the hood, of course, so various PCRE features
+@@ -88,19 +90,12 @@ def options():
+   return {'bdist_wheel': bdist_wheel}
+ 
+ 
+-def include_dirs():
+-  try:
+-    import pybind11
+-    yield pybind11.get_include()
+-  except ModuleNotFoundError:
+-    pass
+-
+-
+-ext_module = setuptools.Extension(
++ext_module = Pybind11Extension(
+     name='_re2',
+     sources=['_re2.cc'],
+-    include_dirs=list(include_dirs()),
+     libraries=['re2'],
++    library_dirs=["../obj/so"],
++    include_dirs=["../"],
+     extra_compile_args=['-fvisibility=hidden'],
+ )
+ 

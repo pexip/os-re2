@@ -5,15 +5,17 @@
 #include <fuzzer/FuzzedDataProvider.h>
 #include <stddef.h>
 #include <stdint.h>
+
 #include <algorithm>
 #include <string>
 #include <vector>
 
+#include "absl/strings/string_view.h"
+#include "re2/filtered_re2.h"
 #include "re2/re2.h"
 #include "re2/regexp.h"
+#include "re2/set.h"
 #include "re2/walker-inl.h"
-
-using re2::StringPiece;
 
 // NOT static, NOT signed.
 uint8_t dummy = 0;
@@ -95,8 +97,8 @@ class SubstringWalker : public re2::Regexp::Walker<int> {
   SubstringWalker& operator=(const SubstringWalker&) = delete;
 };
 
-void TestOneInput(StringPiece pattern, const RE2::Options& options,
-                  StringPiece text) {
+void TestOneInput(absl::string_view pattern, const RE2::Options& options,
+                  RE2::Anchor anchor, absl::string_view text) {
   // Crudely limit the use of ., \p, \P, \d, \D, \s, \S, \w and \W.
   // Otherwise, we will waste time on inputs that have long runs of various
   // character classes. The fuzzer has shown itself to be easily capable of
@@ -105,7 +107,7 @@ void TestOneInput(StringPiece pattern, const RE2::Options& options,
   // counted repetition is involved - whereas the marginal benefit is zero.
   // Crudely limit the use of 'k', 'K', 's' and 'S' too because they become
   // three-element character classes when case-insensitive and using UTF-8.
-  // TODO(junyer): Handle [:isalnum:] et al. when they start to cause pain.
+  // TODO(junyer): Handle [[:alnum:]] et al. when they start to cause pain.
   int char_class = 0;
   int backslash_p = 0;  // very expensive, so handle specially
   for (size_t i = 0; i < pattern.size(); i++) {
@@ -131,6 +133,9 @@ void TestOneInput(StringPiece pattern, const RE2::Options& options,
   if (backslash_p > 1)
     return;
 
+  // Iterate just once when fuzzing. Otherwise, we easily get bogged down
+  // and coverage is unlikely to improve despite significant expense.
+  RE2::FUZZING_ONLY_set_maximum_global_replace_count(1);
   // The default is 1000. Even 100 turned out to be too generous
   // for fuzzing, empirically speaking, so let's try 10 instead.
   re2::Regexp::FUZZING_ONLY_set_maximum_repeat_count(10);
@@ -173,7 +178,7 @@ void TestOneInput(StringPiece pattern, const RE2::Options& options,
 
   if (re.NumberOfCapturingGroups() == 0) {
     // Avoid early return due to too many arguments.
-    StringPiece sp = text;
+    absl::string_view sp = text;
     RE2::FullMatch(sp, re);
     RE2::PartialMatch(sp, re);
     RE2::Consume(&sp, re);
@@ -182,7 +187,7 @@ void TestOneInput(StringPiece pattern, const RE2::Options& options,
   } else {
     // Okay, we have at least one capturing group...
     // Try conversion for variously typed arguments.
-    StringPiece sp = text;
+    absl::string_view sp = text;
     short s;
     RE2::FullMatch(sp, re, &s);
     long l;
@@ -206,6 +211,30 @@ void TestOneInput(StringPiece pattern, const RE2::Options& options,
   dummy += re.NamedCapturingGroups().size();
   dummy += re.CapturingGroupNames().size();
   dummy += RE2::QuoteMeta(pattern).size();
+  dummy += re.Regexp()->ToString().size();
+
+  RE2::Set set(options, anchor);
+  int index = set.Add(pattern, /*error=*/NULL);  // -1 on error
+  if (index != -1 && set.Compile()) {
+    std::vector<int> matches;
+    set.Match(text, &matches);
+  }
+
+  re2::FilteredRE2 filter;
+  index = -1;  // not clobbered on error
+  filter.Add(pattern, options, &index);
+  if (index != -1) {
+    std::vector<std::string> atoms;
+    filter.Compile(&atoms);
+    // Pretend that all atoms match, which
+    // triggers the AND-OR tree maximally.
+    std::vector<int> matched_atoms;
+    matched_atoms.reserve(atoms.size());
+    for (size_t i = 0; i < atoms.size(); ++i)
+      matched_atoms.push_back(static_cast<int>(i));
+    std::vector<int> matches;
+    filter.AllMatches(text, matched_atoms, &matches);
+  }
 }
 
 // Entry point for libFuzzer.
@@ -239,9 +268,17 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   options.set_word_boundary(fdp.ConsumeBool());
   options.set_one_line(fdp.ConsumeBool());
 
+  // ConsumeEnum<RE2::Anchor>() would require RE2::Anchor to specify
+  // kMaxValue, so just use PickValueInArray<RE2::Anchor>() instead.
+  RE2::Anchor anchor = fdp.PickValueInArray<RE2::Anchor>({
+      RE2::UNANCHORED,
+      RE2::ANCHOR_START,
+      RE2::ANCHOR_BOTH,
+  });
+
   std::string pattern = fdp.ConsumeRandomLengthString(999);
   std::string text = fdp.ConsumeRandomLengthString(999);
 
-  TestOneInput(pattern, options, text);
+  TestOneInput(pattern, options, anchor, text);
   return 0;
 }

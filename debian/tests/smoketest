@@ -1,10 +1,10 @@
 #!/bin/sh
-set -efu
+set -efux
 
 cp testinstall.cc "$AUTOPKGTEST_TMP"
 
 cd "$AUTOPKGTEST_TMP"
 
-g++ --std=c++11 -Wall -o testinstall testinstall.cc -lre2
+g++ --std=c++14 -Wall -o testinstall testinstall.cc $(pkgconf --libs re2)
 
 ./testinstall

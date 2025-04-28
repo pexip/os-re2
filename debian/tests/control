@@ -1,2 +1,7 @@
 Tests: smoketest
-Depends: g++, libre2-dev
+Depends: g++, libre2-dev, pkgconf
+Restrictions: allow-stderr
+
+Tests: python-unittests
+Depends: python3-absl, python3-all, python3-re2
+Restrictions: allow-stderr

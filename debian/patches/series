@@ -1,2 +1,4 @@
 parallel-test-runner.patch
 debian-unicode-data.patch
+python-no-bazel.patch
+python-existing-dir.patch
