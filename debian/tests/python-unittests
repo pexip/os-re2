@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eux
+
+cp python/re2_test.py ${AUTOPKGTEST_TMP}
+cd ${AUTOPKGTEST_TMP}
+
+for py in $(py3versions -s); do
+	$py re2_test.py
+done

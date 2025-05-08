@@ -1,0 +1,7 @@
+python/build/
+python/dist/
+python/google_re2.egg-info/
+re2/__pycache__/
+re2/perl_groups.cc
+re2/unicode_casefold.cc
+re2/unicode_groups.cc

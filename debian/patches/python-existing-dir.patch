@@ -1,0 +1,31 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Thu, 30 Jan 2025 15:43:16 -0400
+Subject: Handle an existing re2 directory
+
+Forwarded: no
+---
+ python/setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index 38b89bd..c3285f7 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -105,7 +105,7 @@ PACKAGE = 're2'
+ try:
+   # If we are building from the sdist, we are already in package form.
+   if not os.path.exists('PKG-INFO'):
+-    os.makedirs(PACKAGE)
++    os.makedirs(PACKAGE, exist_ok=True)
+     for filename in (
+         're2.py',
+         # TODO(junyer): Populate as per https://github.com/google/re2/issues/496.
+@@ -116,7 +116,7 @@ try:
+         contents = file.read()
+       filename = re.sub(r'^re2(?=\.py)', '__init__', filename)
+       contents = re.sub(r'^(?=import _)', 'from . ', contents, flags=re.MULTILINE)
+-      with open(f'{PACKAGE}/{filename}', 'x') as file:
++      with open(f'{PACKAGE}/{filename}', 'w') as file:
+         file.write(contents)
+     # TODO(junyer): Populate as per https://github.com/google/re2/issues/496.
+     # with open(f'{PACKAGE}/py.typed', 'x') as file:
