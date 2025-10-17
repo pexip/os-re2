@@ -1,3 +1,10 @@
+re2 (20240702-3+pexip25u2) pexip-trixie; urgency=medium
+
+  * Rebuild for new abseil.
+  * Bump C++ version to C++17 for compatibility with new abseil.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Fri, 17 Oct 2025 13:16:34 +0100
+
 re2 (20240702-3+pexip25u1) pexip-trixie; urgency=medium
 
   * Initial trixie build
