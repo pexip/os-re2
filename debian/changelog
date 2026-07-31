@@ -1,3 +1,9 @@
+re2 (20240702-3+pexip25u4) pexip-trixie; urgency=medium
+
+  * Rebuild for new abseil version
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Fri, 31 Jul 2026 16:44:23 +0100
+
 re2 (20240702-3+pexip25u3) pexip-trixie; urgency=medium
 
   * Trixie build for product distribution
